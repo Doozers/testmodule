@@ -1,0 +1,26 @@
+syntax = "proto3";
+option go_package = "./;testmodule";
+
+service testmoduleSvc {
+    rpc TheTest(TheTestReq) returns (TheTestRes);
+    rpc SpamMe(Empty) returns (SpamMeRes);
+}
+
+message TheTestReq {
+    bool isTest = 1;
+    string msg = 2;
+}
+
+message TheTestRes {
+    message Res {
+        string response = 1;
+        int64 statuscode = 2;
+    }
+    Res res = 1;
+}
+
+message Empty {}
+
+message SpamMeRes {
+    string spam = 1;
+}
